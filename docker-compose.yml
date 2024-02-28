@@ -1,0 +1,32 @@
+version: '1.0'
+services:
+  tooling_db:
+    build:
+      context: ./Docker-Files/db
+      #container_name: tooling-db-server
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: PassWord.1
+    networks:
+      - tooling_app_network
+
+  tooling_frontend:
+    build:
+      context: ./Docker-Files/tooling
+      #container_name: tooling_app
+    ports:
+      - "8080:80"
+    volumes:
+      - frontenddata:/var/www/html
+    networks:
+      - tooling_app_network
+
+volumes:
+  dbdata: {}
+  frontenddata: {}
+
+networks:
+  tooling_app_network:
