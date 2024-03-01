@@ -19,15 +19,15 @@ pipeline {
        stage('Building the Images'){
             steps{
                 script{
-                 sh 'docker compose build '   
+                 sh 'sudo docker compose build '   
                 }
             }
        }
         stage('Tagging the Images'){
             steps{
                 script{
-                 sh 'docker tag tooling-tooling_db iamyole/tooling_db:from_jenkins'   
-                 sh 'docker tag tooling-tooling_frontend iamyole/tooling_frontend:from_jenkins'
+                 sh 'sudo docker tag tooling-tooling_db iamyole/tooling_db:from_jenkins'   
+                 sh 'sudo docker tag tooling-tooling_frontend iamyole/tooling_frontend:from_jenkins'
                 }
             }
        }
@@ -36,10 +36,10 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerhubpw', variable: 'dockerhubpw')]) {
-                        sh 'docker login -u gideonovuzorie@gmail.com -p ${dockerhubpw}'
+                        sh 'sudo docker login -u gideonovuzorie@gmail.com -p ${dockerhubpw}'
                     }
-                    sh 'docker push iamyole/tooling_db:from_jenkins'
-                    sh 'docker push iamyole/tooling_frontend:from_jenkins'
+                    sh 'sudo docker push iamyole/tooling_db:from_jenkins'
+                    sh 'sudo docker push iamyole/tooling_frontend:from_jenkins'
                 }
             }
        }
