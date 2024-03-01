@@ -43,7 +43,6 @@ pipeline {
                 }
             }
        }
-ß
    }
    post{
         always{
