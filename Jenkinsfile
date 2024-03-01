@@ -43,13 +43,14 @@ pipeline {
                 }
             }
        }
-
+ß
    }
    post{
-    always
-    script{
-        sh 'sudo docker compose down -v'
-        sh 'sudo docker rmi -f $(sudo docker images -a -q) '
-    }
+        always{
+            script{
+                sh 'sudo docker compose down -v'
+                sh 'sudo docker rmi -f $(sudo docker images -a -q) '
+            }
+        }
    }
 }
