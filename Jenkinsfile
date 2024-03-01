@@ -26,8 +26,8 @@ pipeline {
         stage('Tagging the Images'){
             steps{
                 script{
-                 sh 'sudo docker tag tooling-tooling_db iamyole/tooling_db:from_jenkins'   
-                 sh 'sudo docker tag tooling-tooling_frontend iamyole/tooling_frontend:from_jenkins'
+                 sh 'sudo docker tag project_tooling-tooling_db iamyole/tooling_db:from_jenkins'   
+                 sh 'sudo docker tag project_tooling-tooling_frontend iamyole/tooling_frontend:from_jenkins'
                 }
             }
        }
